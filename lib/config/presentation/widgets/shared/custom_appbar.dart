@@ -1,3 +1,4 @@
+import 'package:cinemapedia_app/config/theme/theme_context.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatelessWidget {
@@ -6,8 +7,8 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final colors = Theme.of(context).colorScheme;
-    final titleStyle = Theme.of(context).textTheme;
+    final colors = getColorScheme(context);
+    final titleStyle = getTextTheme(context);
 
     return SafeArea(
       bottom: false,

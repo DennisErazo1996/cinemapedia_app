@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:cinemapedia_app/config/domain/entities/movie.dart';
+import 'package:cinemapedia_app/config/theme/theme_context.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MoviesSlideshow extends StatelessWidget {
 
@@ -15,10 +15,20 @@ class MoviesSlideshow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final colors = getColorScheme(context);
+
     return SizedBox(
       width: double.infinity,
       height: 260,
       child: Swiper(
+        pagination:  SwiperPagination(
+          margin: const EdgeInsets.only(top: 10),
+          builder: DotSwiperPaginationBuilder(
+            color: colors.inversePrimary,
+            activeColor: colors.primary,
+          )
+        ),
         viewportFraction: 0.8,
         scale: 0.9,
         autoplay: true,
