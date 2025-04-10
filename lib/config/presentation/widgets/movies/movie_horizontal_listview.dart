@@ -8,7 +8,7 @@ class MovieHorizontalListview extends StatefulWidget {
   final List<Movie> movies;
   final String? title;
   final String? subTitle;
-  final VoidCallbackAction? loadNextPage;
+  final VoidCallback? loadNextPage;
 
   const MovieHorizontalListview(
       {super.key,
@@ -29,13 +29,15 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
   void initState() {
     super.initState();
     
-    if(widget.loadNextPage != null) return;
+    scrollController.addListener(() {
+      if(widget.loadNextPage == null) return;
     
-    if( (scrollController.position.pixels + 200) >= scrollController.position.maxScrollExtent) {
-      
-      widget.loadNextPage!;
-      
-    }
+      if( (scrollController.position.pixels + 200) >= scrollController.position.maxScrollExtent) {
+        
+        widget.loadNextPage!();
+        
+      }
+    });
    
     
   }
