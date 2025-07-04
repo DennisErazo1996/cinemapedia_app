@@ -78,8 +78,6 @@ class _MovieDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = getScreenSize(context);
 
-    const bool isSelected = true;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
