@@ -1,15 +1,11 @@
+import 'package:flutter/material.dart';
 
-import 'package:cinemapedia_app/config/presentation/screens/screens.dart';
-import 'package:go_router/go_router.dart';
+class AppTheme{
 
-final appRouter = GoRouter(
-  initialLocation: '/',
-  routes: [
+  ThemeData getTheme() => ThemeData(
+    useMaterial3: true,
+    colorSchemeSeed: Colors.green,
+  );
 
-    GoRoute(
-      path: '/',
-      name: HomeScreen.name,
-      builder: (context, state) => const HomeScreen(),
-    )
 
-  ]);
+}

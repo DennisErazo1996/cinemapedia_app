@@ -1,12 +1,19 @@
+import 'package:cinemapedia_app/config/presentation/screens/screens.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:flutter/material.dart';
+final appRouter = GoRouter(initialLocation: '/', routes: [
+  GoRoute(
+      path: '/',
+      name: HomeScreen.name,
+      builder: (context, state) => const HomeScreen(),
+      routes: [
+        GoRoute(
+            path: 'movie/:id',
+            name: MovieScreen.name,
+            builder: (context, state) {
+              final movieId = state.pathParameters['id'] ?? 'no-id';
 
-class AppTheme{
-
-  ThemeData getTheme() => ThemeData(
-    useMaterial3: true,
-    colorSchemeSeed: const Color.fromARGB(0, 35, 43, 208)
-  );
-
-
-}
+              return MovieScreen(movieId: movieId);
+            })
+      ]),
+]);
