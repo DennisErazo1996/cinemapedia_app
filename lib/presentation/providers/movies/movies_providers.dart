@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final nowPlayingMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
 
-    final fetchMoreMovies = ref.watch( movieReposoryProvider ).getNowPlaying;
+    final fetchMoreMovies = ref.watch( movieRepositoryProvider ).getNowPlaying;
 
     return MoviesNotifier(
       fetchMoreMovies: fetchMoreMovies
@@ -15,7 +15,7 @@ final nowPlayingMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movi
 
 final popularMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
 
-    final fetchMoreMovies = ref.watch( movieReposoryProvider ).getPopular;
+    final fetchMoreMovies = ref.watch( movieRepositoryProvider ).getPopular;
 
     return MoviesNotifier(
       fetchMoreMovies: fetchMoreMovies
@@ -25,7 +25,7 @@ final popularMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movie>>
 
 final topRatedMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
 
-    final fetchMoreMovies = ref.watch( movieReposoryProvider ).getTopRated;
+    final fetchMoreMovies = ref.watch( movieRepositoryProvider ).getTopRated;
 
     return MoviesNotifier(
       fetchMoreMovies: fetchMoreMovies
@@ -35,7 +35,7 @@ final topRatedMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movie>
 
 final upcomingMoviesProvider = StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
 
-    final fetchMoreMovies = ref.watch( movieReposoryProvider ).getUpcoming;
+    final fetchMoreMovies = ref.watch( movieRepositoryProvider ).getUpcoming;
 
     return MoviesNotifier(
       fetchMoreMovies: fetchMoreMovies

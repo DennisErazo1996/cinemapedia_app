@@ -6,8 +6,8 @@ class HumanFormats {
   static String number( double number ) {
 
     final formattedNumber = NumberFormat.compactCurrency(
-        locale: 'en',
-        decimalDigits: 0,
+        locale: 'es',
+        decimalDigits: 1,
         symbol: '',
       ).format(number);
 
