@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class CustomBottomNavigation extends StatefulWidget {
-  const CustomBottomNavigation({super.key});
+class CustomBottomNavigation extends StatelessWidget {
+  final StatefulNavigationShell navigationShell;
 
-  @override
-  State<CustomBottomNavigation> createState() => _CustomBottomNavigationState();
-}
+  const CustomBottomNavigation({super.key, required this.navigationShell});
 
-class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
-
-  var selectedIndex = 0;
+  void onItemTapped(int index) {
+    navigationShell.goBranch(
+      index,
+      initialLocation: index == navigationShell.currentIndex,
+    );
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,8 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.shifting,
-      currentIndex: selectedIndex,
-      onTap: (value) {
-        setState(() {
-          selectedIndex = value;
-        });
-      },
+      currentIndex: navigationShell.currentIndex,
+      onTap: onItemTapped,
       elevation: 0,
       items: [
 
