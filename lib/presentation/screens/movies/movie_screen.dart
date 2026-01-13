@@ -183,13 +183,12 @@ class _ActorsByMovie extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 FadeInRight(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.network(
                       loadingBuilder: (context, child, loadingProgress) {
-                        if(loadingProgress != null) return const SizedBox(); 
+                        if (loadingProgress != null) return const SizedBox();
                         return FadeIn(child: child);
                       },
                       actor.profilePath,
@@ -242,7 +241,6 @@ class _CustomSliverAppBar extends StatelessWidget {
             // Acción para agregar a favoritos
           },
         ),
-        
       ],
       flexibleSpace: FlexibleSpaceBar(
           titlePadding: const EdgeInsets.only(
@@ -261,24 +259,31 @@ class _CustomSliverAppBar extends StatelessWidget {
             children: [
               SizedBox.expand(
                   child: Image.network(
-                    loadingBuilder: (context, child, loadingProgress) {
-
-                      if(loadingProgress != null) return const SizedBox();
-                      return FadeIn(child:  ZoomIn(
-                        delay: const Duration(milliseconds: 50),
-                        child: child));
-                    },
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress != null) return const SizedBox();
+                  return FadeIn(
+                      child: ZoomIn(
+                          delay: const Duration(milliseconds: 50),
+                          child: child));
+                },
                 movie.posterPath,
                 fit: BoxFit.cover,
               )),
-
-              const _CustomGradient(stops: [0.0, 0.3], begin: Alignment.topRight, end: Alignment.bottomCenter, colors: [Colors.black87, Colors.transparent] ),
-
-              const _CustomGradient(stops: [0.7, 0.9], begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.transparent, Colors.black87]),
-
-              const _CustomGradient(stops: [0.0, 1], begin: Alignment.topLeft, end: Alignment.bottomLeft, colors: [Colors.black87, Colors.transparent]),
-
-            
+              const _CustomGradient(
+                  stops: [0.0, 0.3],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black87, Colors.transparent]),
+              const _CustomGradient(
+                  stops: [0.7, 0.9],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.transparent, Colors.black87]),
+              const _CustomGradient(
+                  stops: [0.0, 1],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomLeft,
+                  colors: [Colors.black87, Colors.transparent]),
             ],
           )),
     );
@@ -286,27 +291,30 @@ class _CustomSliverAppBar extends StatelessWidget {
 }
 
 class _CustomGradient extends StatelessWidget {
-
   final List<double> stops;
   final AlignmentGeometry begin;
   final AlignmentGeometry end;
   final List<Color> colors;
 
-  const _CustomGradient({required this.stops, required this.begin, required this.end, required this.colors});
+  const _CustomGradient(
+      {required this.stops,
+      required this.begin,
+      required this.end,
+      required this.colors});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-          child: DecoratedBox(
-            decoration:  BoxDecoration(
-              gradient: LinearGradient(
-                stops: stops,
-                begin: begin,
-                end: end,
-                colors: colors,
-              ),
-            ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            stops: stops,
+            begin: begin,
+            end: end,
+            colors: colors,
           ),
-        );
+        ),
+      ),
+    );
   }
 }

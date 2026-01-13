@@ -40,3 +40,6 @@ class Movie {
     required this.voteCount, 
   });
 }
+
+
+
